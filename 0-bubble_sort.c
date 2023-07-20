@@ -14,7 +14,7 @@ void bubble_sort(int *array, size_t size)
 
 	if (!array || size <= 0)
 		return;
-	
+
 	while (1)
 	{
 		flag = 0;
@@ -36,6 +36,7 @@ void bubble_sort(int *array, size_t size)
 /**
  * swap - swaps element in array
  * @idx: index to be swap
+ * @array: array to swap
  * Return: no return
  */
 
