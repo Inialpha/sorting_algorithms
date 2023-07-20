@@ -10,10 +10,10 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *ptr, *temp = *list;
-	
+
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	
+
 	ptr = (*list)->next;
 	while (ptr != NULL)
 	{
@@ -25,6 +25,14 @@ void insertion_sort_list(listint_t **list)
 		ptr = ptr->next;
 	}
 }
+
+
+/**
+ * swap_list - swaps the node with the previous node
+ * @list: the linked list
+ * @node: node to be swaped
+ * Return: The current node
+ */
 
 listint_t *swap_list(listint_t **list, listint_t *node)
 {
