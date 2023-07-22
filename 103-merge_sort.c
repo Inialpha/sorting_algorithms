@@ -9,18 +9,15 @@
 
 void merge_sort(int *array, size_t size)
 {
-	size_t i;
-	int *ptr = malloc(size * sizeof(int));
+	int *ptr;
 
-	if (!ptr)
+	if (!array || size < 2)
 		return;
 
-
+	ptr = malloc(size * sizeof(int));
 	sort_list(array, 0, size - 1, ptr);
-	for (i = 0; i < size; i++)
-		array[i] = ptr[i];
+	free(ptr);
 }
-
 /**
  * sort_list - divides the list to smaller units
  * @arr: array to be sorted
@@ -33,9 +30,11 @@ void sort_list(int *arr, int left, int right, int *ptr)
 {
 	int mid;
 
-	if (left < right)
+	mid = (left + right) / 2;
+	if ((left + right) % 2 == 0)
+		mid--;
+	if (mid >= left)
 	{
-		mid = left + (right - left) / 2;
 		sort_list(arr, left, mid, ptr);
 		sort_list(arr, mid + 1, right, ptr);
 		merge(arr, left, mid, right, ptr);
@@ -80,4 +79,12 @@ void merge(int *arr, int left, int mid, int right, int *ptr)
 
 	for (nlen = left; nlen <= right; nlen++)
 		arr[nlen] = ptr[nlen];
+
+	printf("Merging...\n");
+	printf("[left]: ");
+	print_array(ptr + left, mid - left + 1);
+	printf("[right]: ");
+	print_array(ptr + mid + 1, right - mid);
+	printf("[Done]: ");
+	print_array(ptr + left, right - left + 1);
 }
