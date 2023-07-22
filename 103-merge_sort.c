@@ -4,66 +4,80 @@
  * merge_sort - sorts an array of integers in ascending
  * order using the Merge sort algorithm
  * @array: array to be sorted
- * @size of array
+ * @size: of array
  */
 
 void merge_sort(int *array, size_t size)
 {
+	size_t i;
+	int *ptr = malloc(size * sizeof(int));
 
-	sort_list(array, size);
+	if (!ptr)
+		return;
+
+
+	sort_list(array, 0, size - 1, ptr);
+	for (i = 0; i < size; i++)
+		array[i] = ptr[i];
 }
 
-void sort_list(int *arr, size_t len)
+/**
+ * sort_list - divides the list to smaller units
+ * @arr: array to be sorted
+ * @left: the begining of the sub array
+ * @right: end of the sub-array
+ * @ptr: pointer to the memory use for mergeing
+ */
+
+void sort_list(int *arr, int left, int right, int *ptr)
 {
-	size_t mid = len / 2;
-	int arr1[mid], arr2[len - mid];
-	size_t r, l, j;
+	int mid;
 
-	if (len > 1)
+	if (left < right)
 	{
-		for (l = 0; l < mid; l++)
-			arr1[l] = arr[l];
-		sort_list(arr1, mid);
-		
-		j = mid;
-		for (r = 0; r < len - mid; r++)
-		{
-			arr2[r] = arr[j];
-			j++;
-		}
-		sort_list(arr2, len - mid);
-
-		merge(arr, arr1, arr2, mid, len - mid);
-
+		mid = left + (right - left) / 2;
+		sort_list(arr, left, mid, ptr);
+		sort_list(arr, mid + 1, right, ptr);
+		merge(arr, left, mid, right, ptr);
 	}
 }
 
-void merge(int *arr, int *arr1, int *arr2, int len1, int len2)
+/**
+ * merge - merge two parts of the array;
+ * @arr: the arr to be sorted
+ * @left: begining of the first array (left-side)
+ * @right: end if the second array (right-side)
+ * @mid: end of the first array (left-side)
+ * @ptr: pointer to the auxiliary array
+ */
+
+void merge(int *arr, int left, int mid, int right, int *ptr)
 {
-	size_t l, r, nlen;
+	int l, r, nlen;
 
-	l = r = nlen = 0;
+	l = left, r = mid + 1, nlen = left;
 
-	while (l < len1 && r < len2)
+	while (l <= mid && r <= right)
 	{
-		if (arr1[l] < arr2[r])
+		if (arr[l] <= arr[r])
 		{
-			arr[nlen] = arr1[l];
+			ptr[nlen] = arr[l];
 			l++;
 		}
 		else
 		{
-			arr[nlen] = arr2[r];
+			ptr[nlen] = arr[r];
 			r++;
 		}
 		nlen++;
 	}
-	
-	for (; l < len1; l++, nlen++)
-		arr[nlen] = arr1[l];
 
-	for (; r < len2; r++, nlen++)
-		arr[nlen] = arr2[r];
+	for (; l <= mid; l++, nlen++)
+		ptr[nlen] = arr[l];
+
+	for (; r <= right; r++, nlen++)
+		ptr[nlen] = arr[r];
+
+	for (nlen = left; nlen <= right; nlen++)
+		arr[nlen] = ptr[nlen];
 }
-
-
