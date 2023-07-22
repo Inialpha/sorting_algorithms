@@ -87,6 +87,6 @@ void swap_selection(int *arr, size_t min, size_t i);
 void sort(int *arr, int low, int high, size_t size);
 int partition(int *arr, size_t low, size_t high, size_t size);
 
-void sort_list(int *arr, size_t len);
-void merge(int *arr, int *arr1, int *arr2, int len1, int len2);
+void sort_list(int *arr, int left, int right, int *ptr);
+void merge(int *arr, int left, int mid, int right, int *ptr);
 #endif
