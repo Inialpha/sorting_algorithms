@@ -14,33 +14,57 @@ void radix_sort(int *array, size_t size)
 
 	max = findMax(array, size);
 
-	for (exp = 1; exp / max > 0; max *= 10)
-		countingSort(arr, size, exp, output);
+	for (exp = 1; max / exp > 0; exp *= 10)
+	{
+		countingSort(array, size, exp, output);
+		print_array(array, size);
+	}
+	free(output);
 }
 
 
-void countingSort(int arr, size_t, size, int exp, int *output)
+/**
+ * countingSort - counting sort
+ * @arr: the array to be sorted
+ * @size: size of the array
+ * @exp: the current base
+ * @output: auxiliary array for sorting
+ */
+
+void countingSort(int *arr, size_t size, int exp, int *output)
 {
-	size_t i;
+	int i;
 	int count[10] = {0};
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
 		count[(arr[i] / exp) % 10]++;
 
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
-	
-	for (i = 0; i < size; i++)
-		output[count[
+
+	for (i = size - 1; i >= 0; i--)
+	{
+		output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+		count[(arr[i] / exp) % 10]--;
+	}
+	for (i = 0; i < (int)size; i++)
+		arr[i] = output[i];
 
 
 }
+
+/**
+ * findMax - find the maximum nuber in the array
+ * @arr: array to be checked
+ * @size: size of the array
+ * Return: mwximum value
+ */
 
 int findMax(int *arr, size_t size)
 {
 	int i, max = arr[0];
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (int)size; i++)
 	{
 		if (arr[i] > max)
 			max = arr[i];
