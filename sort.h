@@ -89,4 +89,6 @@ int partition(int *arr, size_t low, size_t high, size_t size);
 
 void sort_list(int *arr, size_t len);
 void merge(int *arr, int *arr1, int *arr2, int len1, int len2);
+void countingSort(int *arr, size_t size, int exp, int *output);
+int findMax(int *arr, size_t size);
 #endif
