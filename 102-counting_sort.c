@@ -11,17 +11,17 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	size_t i;
+	unsigned int i;
 	int *count = NULL;
 	int *sorted = NULL;
-	size_t max = array[0];
+	unsigned int max = array[0];
 
 	if (array == NULL || size < 2)
 		return;
     
 	for (i = 0; i < size; i++)
 	{
-		if (array[i] >= max)
+		if (array[i] >= (int)max)
 		max = array[i];
 	}
     
