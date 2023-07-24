@@ -10,8 +10,12 @@
 void radix_sort(int *array, size_t size)
 {
 	int max, exp;
-	int *output = malloc(size * sizeof(int));
+	int *output;
 
+	if (!array || size < 2)
+		return;
+
+	output = malloc(size * sizeof(int));
 	max = findMax(array, size);
 
 	for (exp = 1; max / exp > 0; exp *= 10)
