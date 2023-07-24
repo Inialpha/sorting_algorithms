@@ -92,5 +92,7 @@ void merge(int *arr, int left, int mid, int right, int *ptr);
 
 void countingSort(int *arr, size_t size, int exp, int *output);
 int findMax(int *arr, size_t size);
-
+void bitonic_swap(int *arr, int i, int j, int order);
+void bitonic_sequence(int *arr, int start, int no_elem, int order, int size);
+void bitonic_merge(int *arr, int start, int no_elem, int order);
 #endif
