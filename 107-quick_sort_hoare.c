@@ -10,31 +10,31 @@
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (array && size > 1)
-		sort(array, 0, size - 1, size);
+		q_sort(array, 0, size - 1, size);
 }
 
 /**
- * sort - a revursive sort
+ * q_sort - a recursive sort
  * @arr: array to be sorted
  * @low: the beginig of the array
  * @high: the end of the array
  * @size: size of the array
  */
 
-void sort(int *arr, int low, int high, size_t size)
+void q_sort(int *arr, int low, int high, size_t size)
 {
 	int pivot_index;
 
 	if (low < high)
 	{
-		pivot_index = partition(arr, low, high, size);
-		sort(arr, low, pivot_index, size);
-		sort(arr, pivot_index + 1, high, size);
+		pivot_index = hoare_partition(arr, low, high, size);
+		q_sort(arr, low, pivot_index, size);
+		q_sort(arr, pivot_index + 1, high, size);
 	}
 }
 
 /**
- * partition - partitions the array
+ * hoare_partition - partitions the array
  * @arr: the array to be partition
  * @low: the begining of the array
  * @high: end of list
@@ -42,9 +42,9 @@ void sort(int *arr, int low, int high, size_t size)
  * Return: the current index
  */
 
-int partition(int *arr, size_t low, size_t high, size_t size)
+int hoare_partition(int *arr, int low, int high, size_t size)
 {
-	size_t j, i;
+	int j, i;
 	int temp, pivot = arr[low];
 
 	i = low - 1;
