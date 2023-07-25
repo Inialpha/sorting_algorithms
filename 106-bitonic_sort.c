@@ -2,7 +2,7 @@
 
 /**
  * bitonic_sort - sorts an array of integers in ascending
- * order using the Bitonic sort algorithm.
+ * order using the Bitonic sort.
  * @array: array to be sorted.
  * @size: size of array
  */
