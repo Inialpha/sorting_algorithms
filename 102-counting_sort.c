@@ -14,12 +14,12 @@ void counting_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	for (i = 0; i < size; i++)
+	/*for (i = 0; i < size; i++)
 	{
 		if (array[i] >= (int)max)
 		max = array[i];
-	}
-
+	}*/
+	max = findMax(array, size);
 	count = malloc(sizeof(int) * (max + 1));
 	sorted = malloc(sizeof(int) * size);
 
@@ -48,4 +48,24 @@ void counting_sort(int *array, size_t size)
 
 	free(count);
 	free(sorted);
+}
+
+
+/**
+ * findMax - find the maximum nuber in the array
+ * @arr: array to be checked
+ * @size: size of the array
+ * Return: mwximum value
+ */
+
+int findMax(int *arr, size_t size)
+{
+	int i, max = arr[0];
+
+	for (i = 0; i < (int)size; i++)
+	{
+		if (arr[i] > max)
+			max = arr[i];
+	}
+	return (max);
 }
