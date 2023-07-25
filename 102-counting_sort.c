@@ -14,11 +14,6 @@ void counting_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	/*for (i = 0; i < size; i++)
-	{
-		if (array[i] >= (int)max)
-		max = array[i];
-	}*/
 	max = findMax(array, size);
 	count = malloc(sizeof(int) * (max + 1));
 	sorted = malloc(sizeof(int) * size);
