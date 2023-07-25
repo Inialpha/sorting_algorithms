@@ -2,7 +2,7 @@
 
 /**
  * insertion_sort_list - sorts a doubly linked
- * list of integers in ascending order using the Insertion sort algorithm
+ * list of integers in ascending order using the Insertion sorting
  * @list: to be sorted
  * Return: no return
  */
