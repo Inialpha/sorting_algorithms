@@ -63,12 +63,12 @@ void merge(int *arr, size_t left, size_t mid, size_t right, int *ptr)
 
 void sort_list(int *arr, size_t left, size_t right, int *ptr)
 {
-    if (left < right)
-    {
-        size_t mid = left + (right - left) / 2;
-        sort_list(arr, left, mid, ptr);
-        sort_list(arr, mid + 1, right, ptr);
-        merge(arr, left, mid, right, ptr);
-    }
+	if (left < right)
+	{
+		size_t mid = left + (right - left) / 2;
+		sort_list(arr, left, mid, ptr);
+		sort_list(arr, mid + 1, right, ptr);
+		merge(arr, left, mid, right, ptr);
+	}
 }
 
