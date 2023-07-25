@@ -12,53 +12,53 @@ void merge(int *arr, size_t left, size_t mid, size_t right, int *ptr);
 void merge_sort(int *array, size_t size)
 {
 	size_t i;
-    int *ptr = malloc(size * sizeof(int));
-    if (!ptr)
-        return;
+	int *ptr = malloc(size * sizeof(int));
+	if (!ptr)
+		return;
 
-    sort_list(array, 0, size - 1, ptr);
+	sort_list(array, 0, size - 1, ptr);
 
-    for (i = 0; i < size; i++)
-        array[i] = ptr[i];
+	for (i = 0; i < size; i++)
+		array[i] = ptr[i];
 
-    free(ptr);
+	free(ptr);
 }
 
 void merge(int *arr, size_t left, size_t mid, size_t right, int *ptr)
 {
-    size_t i = left, j = mid + 1, k = left;
+	size_t i = left, j = mid + 1, k = left;
 
-    while (i <= mid && j <= right)
-    {
-        if (arr[i] <= arr[j])
-        {
-            ptr[k] = arr[i];
-            i++;
-        }
-        else
-        {
-            ptr[k] = arr[j];
-            j++;
-        }
-        k++;
-    }
+	while (i <= mid && j <= right)
+	{
+		if (arr[i] <= arr[j])
+		{
+			ptr[k] = arr[i];
+			i++;
+		}
+		else
+		{
+			ptr[k] = arr[j];
+			j++;
+		}
+		k++;
+	}
 
-    while (i <= mid)
-    {
-        ptr[k] = arr[i];
-        i++;
-        k++;
-    }
+	while (i <= mid)
+	{
+		ptr[k] = arr[i];
+		i++;
+		k++;
+	}
 
-    while (j <= right)
-    {
-        ptr[k] = arr[j];
-        j++;
-        k++;
-    }
+	while (j <= right)
+	{
+		ptr[k] = arr[j];
+		j++;
+		k++;
+	}
 
-    for (k = left; k <= right; k++)
-        arr[k] = ptr[k];
+	for (k = left; k <= right; k++)
+		arr[k] = ptr[k];
 }
 
 void sort_list(int *arr, size_t left, size_t right, int *ptr)
