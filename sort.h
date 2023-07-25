@@ -95,4 +95,7 @@ int findMax(int *arr, size_t size);
 void bitonic_swap(int *arr, int i, int j, int order);
 void bitonic_sequence(int *arr, int start, int no_elem, int order, int size);
 void bitonic_merge(int *arr, int start, int no_elem, int order);
+int hoare_partition(int *arr, int low, int high, size_t size);
+void q_sort(int *arr, int low, int high, size_t size);
+
 #endif
