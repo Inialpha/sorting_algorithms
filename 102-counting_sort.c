@@ -8,11 +8,10 @@
 void counting_sort(int *array, size_t size)
 {
 	int *count = NULL, *sorted = NULL;
-	unsigned int i, max = array[0];
+	unsigned int i, max;
 
 	if (array == NULL || size < 2)
 		return;
-
 	max = findMax(array, size);
 	count = malloc(sizeof(int) * (max + 1));
 	sorted = malloc(sizeof(int) * size);
