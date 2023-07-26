@@ -2,7 +2,7 @@
 
 /**
  * quick_sort_hoare - sorts an array of integers in ascending
- * order using the Quick sort algorithm
+ * order using the Quick sort.
  * @array: array to be sorted
  * @size: size of the array
  */

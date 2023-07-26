@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * cocktail_sort_list - sorts a doubly linked list of integers
+ * cocktail_sort_list - sorts a doubly linked list using cocktail_sort
  * in ascending order using the Cocktail shaker sort algorithm
  * @list: list to be sorted
  */
